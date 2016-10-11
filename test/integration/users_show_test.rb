@@ -6,7 +6,7 @@ class UsersShowTest < ActionDispatch::IntegrationTest
   # end
 
   def setup
-    @user = users(:malory)
+    @user = users(:asshole)
   end
 
   test "should redirect when show in-activated user profile" do
