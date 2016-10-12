@@ -65,7 +65,7 @@ Rails.application.configure do
   host = "polar-basin-60879.herokuapp.com"
   config.action_mailer.default_url_options = {host: host}
   ActionMailer::Base.smtp_settings = {
-    :address => 'smpt.sendgrid.net',
+    :address => 'smtp.sendgrid.net',
     :port => '587',
     :authentication => :plain,
     :user_name => ENV['SENDGRID_USERNAME'],
