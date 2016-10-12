@@ -18,9 +18,7 @@ gem 'bootstrap-will_paginate', '0.0.10'
 
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'fog'
-
-gem "carrierwave-upyun"
+gem 'carrierwave-aliyun'
 
 group :development, :test do
   gem 'sqlite3'

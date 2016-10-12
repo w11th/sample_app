@@ -1,14 +1,18 @@
 # encoding: utf-8
-IMAGE_UPLOADER_ALLOW_IMAGE_VERSION_NAMES = %(320 640 800)
 class PictureUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  #process resize_to_limit: [400, 400]
+  process resize_to_limit: [600, 600]
 
   # Choose what kind of storage to use for this uploader:
-  storage :fog
+  #storage :fog
+  if Rails.env.productiont?
+    storage :aliyun
+  else
+    storage :file
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -16,7 +20,7 @@ class PictureUploader < CarrierWave::Uploader::Base
    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-    # Provide a default URL as a default if there hasn't been a file uploaded:
+  # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
   #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
