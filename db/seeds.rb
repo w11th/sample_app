@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(name: "Example User", email: "example@railstutorial.org", password: "foobar", password_confirmation: "foobar", admin: "true", activated: true, activated_at: Time.zone.now)
 
 User.create!(name: "Foobar", email: "foo@bar.com", password: "foobar", password_confirmation: "foobar", admin: "true", activated: true, activated_at: Time.zone.now)
 
@@ -23,3 +22,9 @@ users = User.order(:created_at).take(6)
   users.each { |user| user.microposts.create!(content: content) }
 end
 
+users = User.all
+user = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed)}
+followers.each {|follower| follower.follow(user)}
